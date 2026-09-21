@@ -38,7 +38,6 @@ export function AssetCard({
         <span className="label-caps absolute bottom-2 right-2 rounded bg-background/80 px-1.5 py-0.5 text-foreground">
           {formatDuration(asset.duration)}
         </span>
-      </article_thumb_end>
       </button>
 
       <div className="flex flex-1 flex-col p-4">
