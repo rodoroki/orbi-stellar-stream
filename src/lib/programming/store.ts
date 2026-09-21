@@ -95,7 +95,8 @@ export const orbiStore = {
   duplicateItem(itemUid: string) {
     const index = state.queue.findIndex((i) => i.uid === itemUid);
     if (index < 0) return;
-    const copy = { ...state.queue[index], uid: uid() };
+    const source = state.queue[index]!;
+    const copy: ProgramItem = { ...source, uid: uid() };
     const queue = [...state.queue];
     queue.splice(index + 1, 0, copy);
     setState({ ...state, queue });
@@ -104,6 +105,7 @@ export const orbiStore = {
     if (from === to || from < 0 || to < 0 || from >= state.queue.length || to >= state.queue.length) return;
     const queue = [...state.queue];
     const [moved] = queue.splice(from, 1);
+    if (!moved) return;
     queue.splice(to, 0, moved);
     setState({ ...state, queue });
   },
