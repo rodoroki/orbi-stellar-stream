@@ -34,7 +34,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <StatusPill
               label={t("status.broadcast")}
               value={broadcastState}
-              tone={broadcastState === "READY" ? "ok" : "neutral"}
+              tone={programReady ? "info" : "neutral"}
             />
             <StatusPill label={t("status.youtube")} value="NÃO CONFIGURADO" tone="warn" />
             <StatusPill label={t("status.encoder")} value="NÃO CONFIGURADO" tone="neutral" />
