@@ -16,7 +16,9 @@ const NAV = [
 export function AppShell({ children }: { children: ReactNode }) {
   const program = useProgram();
   const { history } = useOrbiState();
-  const broadcastState = program.items.length > 0 && program.rights.clear ? "READY" : "OFFLINE";
+  // READY also requires YouTube + encoder, both NOT CONFIGURED in this milestone.
+  const programReady = program.items.length > 0 && program.rights.clear;
+  const broadcastState = "OFFLINE";
 
   return (
     <div className="station-grid min-h-screen bg-background">
