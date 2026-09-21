@@ -30,6 +30,7 @@ export function AssetCard({
           src={asset.thumbnailUrl}
           alt={asset.title}
           loading="lazy"
+          referrerPolicy="no-referrer"
           className="h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-[1.03]"
         />
         <span className="absolute inset-0 flex items-center justify-center bg-background/40 opacity-0 transition-opacity group-hover:opacity-100">

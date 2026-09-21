@@ -121,6 +121,7 @@ function ProgramPage() {
                 <img
                   src={entry.asset.thumbnailUrl}
                   alt=""
+                  referrerPolicy="no-referrer"
                   className="hidden h-12 w-20 rounded object-cover sm:block"
                 />
                 <div className="min-w-0 flex-1">
