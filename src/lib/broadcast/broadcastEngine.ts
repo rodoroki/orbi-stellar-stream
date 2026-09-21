@@ -67,8 +67,21 @@ const NOT_CONFIGURED: EngineState = {
 
 export const broadcastEngine: BroadcastEngine = {
   async buildRenderPlan(items, profile = DEFAULT_ENCODER_PROFILE) {
-    return { segments: [], totalDuration: 0, profile: profile ?? DEFAULT_ENCODER_PROFILE } as RenderPlan &
-      Record<never, never>;
+    const { NASA_CATALOG } = await import("../nasa/catalog");
+    let startAt = 0;
+    const segments: RenderPlanSegment[] = [];
+    for (const item of items) {
+      const asset = NASA_CATALOG.find((a) => a.id === item.assetId);
+      if (!asset) continue;
+      segments.push({
+        assetId: asset.id,
+        mediaUrl: asset.mediaUrl,
+        startAt,
+        duration: asset.duration,
+      });
+      startAt += asset.duration;
+    }
+    return { segments, totalDuration: startAt, profile };
   },
   async openPipe() {
     return false;
